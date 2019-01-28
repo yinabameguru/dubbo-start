@@ -1,0 +1,3 @@
+rootProject.name = 'dubbo-start'
+include 'dubbo-start-api', 'dubbo-start-server'
+

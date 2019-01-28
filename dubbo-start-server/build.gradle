@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+    compileOnly 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    compile project (':dubbo-start-api')
+
+    //dubbo
+    def dubboVersion = '2.6.5'
+    compile 'com.alibaba.boot:dubbo-spring-boot-autoconfigure:0.2.1'
+    compile "com.alibaba:dubbo:${dubboVersion}"
+    compile 'io.netty:netty-all'
+
+
+}
