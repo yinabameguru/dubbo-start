@@ -4,18 +4,19 @@ buildscript {
     }
     repositories {
         mavenCentral()
-//        mavenLocal()
-//        maven { url 'https://oss.sonatype.org/content/repositories/snapshots'}
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
-
+apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+group = 'com.za'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
 
 repositories {
     mavenCentral()
@@ -35,6 +36,4 @@ dependencies {
     compile 'com.alibaba.boot:dubbo-spring-boot-starter:0.2.0'
     compile "com.alibaba:dubbo:${dubboVersion}"
     compile 'com.alibaba.spring:spring-context-support:1.0.2'
-
-
 }
