@@ -1,29 +1,32 @@
 plugins {
     id 'java'
 }
-
-
 allprojects {
     group 'com.jza'
-}
-
-subprojects {
     sourceCompatibility = 1.8
     apply plugin: 'java'
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-    
     repositories {
-        mavenLocal()
-        maven { url "http://120.79.188.233:8081/repository/maven-releases/" }
-        maven { url "http://120.79.188.233:8081/repository/maven-public/" }
-        mavenCentral()
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+
+        maven {
+            credentials {
+                username 'releaseRepository.username'
+                password 'releaseRepository.password'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/52229-release-m0ZCWF/'
+        }
+        maven {
+            credentials {
+                username 'snapshotRepository.username'
+                password 'snapshotRepository.password'
+            }
+            url 'https://repo.rdc.aliyun.com/repository/52229-snapshot-TN2MTN/'
+        }
     }
 }
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
