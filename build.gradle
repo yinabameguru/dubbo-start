@@ -11,6 +11,13 @@ subprojects {
     sourceCompatibility = 1.8
     apply plugin: 'java'
     [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+    
+    repositories {
+        mavenLocal()
+        maven { url "http://120.79.188.233:8081/repository/maven-releases/" }
+        maven { url "http://120.79.188.233:8081/repository/maven-public/" }
+        mavenCentral()
+    }
 }
 
 repositories {
